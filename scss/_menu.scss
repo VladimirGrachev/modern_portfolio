@@ -1,0 +1,142 @@
+// Menu Button
+.menu-btn {
+  position: fixed;
+  top: 35px;
+  right: 35px;
+  cursor: pointer;
+  z-index: 2;
+  @include easeOut;
+
+  .btn-line {
+    width: 28px;
+    height: 3px;
+    background: #fff;
+    margin-bottom: 5px;
+    @include easeOut;
+  }
+
+  &.close {
+    //Rotate menu button into X
+    transform: rotate(180deg);
+
+    // Line 1 - rotate
+    .btn-line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    // Line 2 - hide
+    .btn-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    // Line 3 - rotate
+    .btn-line:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+  }
+}
+
+// Menu overlay
+.menu {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  opacity: 0.9;
+  visibility: hidden;
+
+  &.show {
+    visibility: visible;
+  }
+
+  &-nav,
+  &-branding {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    float: left;
+    height: 100vh;
+    @include easeOut;
+  }
+
+  // Menu navigation site
+  &-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: darken($primary-color, 5);
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 300;
+
+    transform: translate3d(0, -100%, 0);
+    @include easeOut;
+
+    // Slide from top
+    &.show {
+      transform: translate3d(0, 0, 0);
+      @include easeOut;
+    }
+
+    .nav-item {
+      padding: 0 0 30px 0;
+
+      &.current > a {
+        color: $secondary-color;
+      }
+
+      transform: translate3d(600px, 0, 0);
+      @include easeOut;
+      transition-delay: 0.3s;
+
+      .nav-link {
+        display: inline-block;
+
+        &:hover {
+          color: $secondary-color;
+          @include easeOut;
+        }
+      }
+
+      &.show {
+        transform: translate3d(0, 0, 0);
+        @include easeOut;
+        transition-delay: 0.3s;
+      }
+
+      @for $x from 1 through 4 {
+        &:nth-child(#{$x}) {
+          transition-delay: $x * 0.1s;
+        }
+      }
+    }
+  }
+
+  // Branding site
+  &-branding {
+    background: $primary-color;
+    transform: translate3d(0, 100%, 0);
+
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .portrait {
+      width: 250px;
+      height: 250px;
+      border: 3px solid $secondary-color;
+      border-radius: 50%;
+      background: url("../img/portrait.jpg");
+
+      transform: translate3d(-600px, 0, 0);
+
+      &.show {
+        transform: translate3d(0, 0, 0);
+        @include easeOut;
+
+        transition-delay: 0.3s;
+      }
+    }
+  }
+}
