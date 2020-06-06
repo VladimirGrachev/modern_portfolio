@@ -1,0 +1,154 @@
+// Small devices
+@include sm {
+  // Main Page
+
+  main#home {
+    text-align: center;
+    h1 {
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+  }
+
+  // About Page
+  main#about {
+    text-align: center;
+    .lg-heading {
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .sm-heading {
+      margin-bottom: 2rem;
+    }
+    .about-info {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "bioImage"
+        "bio"
+        "item1"
+        "item2"
+        "item3";
+    }
+  }
+
+  // Work-Projects Page
+  main#work {
+    text-align: center;
+    .lg-heading {
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .projects {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  // Contact Page
+  main#contact {
+    text-align: center;
+    .lg-heading {
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .boxes {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  // Menu Overlay
+  .menu {
+    .menu-nav,
+    .menu-branding {
+      float: none;
+    }
+
+    .menu-branding {
+      width: 100%;
+      height: 25vh;
+      transform: translate(600px, 0);
+      @include easeOut;
+
+      &.show {
+        transform: translate(0, 0);
+        @include easeOut;
+      }
+      .portrait {
+        width: 150px;
+        height: 150px;
+        background: url("../img/portrait_small.jpg");
+      }
+    }
+
+    .menu-nav {
+      width: 100%;
+      height: 75vh;
+      justify-content: start;
+      transform: translate(-600px, 0);
+      @include easeOut;
+
+      &.show {
+        transform: translate(0, 0);
+        @include easeOut;
+      }
+    }
+  }
+}
+
+// Medium devices
+
+@include md {
+  //About Page
+  main#about {
+    text-align: center;
+    .about-info {
+      .bio-image {
+        width: 220px;
+        height: 220px;
+      }
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas:
+        "bioImage bio"
+        "item1 item2"
+        "item3 item3";
+      .bio {
+        font-size: 18px;
+      }
+    }
+  }
+
+  // Work-Project Page
+  main#work {
+    .projects {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  // Contact Page
+  main#contact {
+    text-align: center;
+    .boxes {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 2rem;
+    }
+  }
+}
+
+// Large Screen
+@include lg {
+  main#work {
+    .projects {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+}
+
+// Extra Large Screen
+@include xlg {
+  main#work {
+    .projects {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+}

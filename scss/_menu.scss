@@ -1,0 +1,132 @@
+//Menu Button
+.btn-menu {
+  position: fixed;
+  right: 35px;
+  top: 35px;
+  z-index: 3;
+  cursor: pointer;
+  @include easeOut;
+
+  .btn-line {
+    width: 28px;
+    height: 3px;
+    background: #fff;
+    margin-bottom: 5px;
+    @include easeOut;
+  }
+
+  &.close {
+    // Transform menu button into X
+    transform: rotate(180deg);
+
+    // Line 1 rotate
+    .btn-line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    // Line 2 hide
+    .btn-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    // Line 3 rotate
+    .btn-line:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+  }
+}
+
+// Menu Overlay
+.menu {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  opacity: 0.9;
+  visibility: hidden;
+
+  &.show {
+    visibility: visible;
+  }
+
+  &-nav,
+  &-branding {
+    display: flex;
+    height: 100vh;
+    width: 50%;
+    flex-flow: column wrap;
+    float: left;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  // Menu navigation site
+  &-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    background: darken($primary-color, 5);
+    font-size: 30px;
+    font-weight: 300;
+    text-transform: uppercase;
+
+    transform: translate(0, -100%);
+    @include easeOut;
+
+    &.show {
+      transform: translate(0, 0);
+      @include easeOut;
+
+      .nav-item {
+        transform: translate(0, 0);
+        @include easeOut;
+        transition-delay: 0.5s;
+
+        @for $x from 1 to 4 {
+          &:nth-child(#{$x}) {
+            transition-delay: $x * 0.1s;
+          }
+        }
+      }
+    }
+
+    .nav-item {
+      padding: 0 0 30px 0;
+
+      transform: translate(600px, 0);
+      @include easeOut;
+      transition-delay: 0.3s;
+
+      &.current > .nav-link {
+        color: $secondary-color;
+      }
+      .nav-link:hover {
+        color: $secondary-color;
+        @include easeOut;
+      }
+    }
+  }
+
+  // Menu Branding Site
+  &-branding {
+    background: $primary-color;
+    @include easeOut;
+    .portrait {
+      border-radius: 50%;
+      border: 3px solid $secondary-color;
+      transform: translate(-600px, 0);
+      transition-delay: 0.5s;
+    }
+
+    transform: translate(0, 100%);
+    @include easeOut;
+    &.show {
+      transform: translate(0, 0);
+
+      .portrait {
+        transform: translate(0, 0);
+        @include easeOut;
+        transition-delay: 0.3s;
+      }
+    }
+  }
+}

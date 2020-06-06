@@ -1,14 +1,16 @@
 @import "config";
+@import "menu";
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  background: $primary-color;
-  color: #fff;
-  height: 100%;
   margin: 0;
+  padding: 0;
+  height: 100vh;
+  color: #fff;
+  background: $primary-color;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.5;
 
@@ -16,65 +18,59 @@ body {
     background: $home-image;
     background-size: cover;
     background-attachment: fixed;
+    overflow: hidden;
 
     &::after {
       content: "";
       position: absolute;
-      right: 0;
       top: 0;
+      right: 0;
       width: 100%;
       height: 100%;
+      background: rgba($primary-color, $opacity);
       z-index: -1;
-      background: rgba($primary-color, $background-opacity);
     }
   }
-}
 
-// Headings
-h1,
-h2,
-h3 {
-  margin: 0;
-  font-weight: 400;
-
-  &.lg-heading {
-    font-size: 6rem;
+  main {
+    min-height: calc(100vh - 60px);
   }
 
-  &.sm-heading {
-    margin-bottom: 2rem;
-    padding: 0.2rem 1rem;
-    background: rgba(lighten($primary-color, 2), 0.5);
+  h1,
+  h2,
+  h3 {
+    font-weight: 400;
+
+    &.lg-heading {
+      font-size: 6rem;
+      margin: 0;
+
+      .text-secondary {
+        color: $secondary-color;
+      }
+    }
+
+    &.sm-heading {
+      background: rgba(lighten($primary-color, 2), 0.5);
+      margin: 0 0 2rem 0;
+      padding: 0.2rem 1rem;
+    }
   }
-}
 
-// Links
-a {
-  color: #fff;
-  text-decoration: none;
-}
+  &:after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    background: $secondary-color;
+    z-index: -1;
+  }
 
-header {
-  position: fixed;
-  width: 100%;
-  z-index: 2;
-}
-
-.text-secondary {
-  color: $secondary-color;
-}
-
-main {
-  padding: 4rem;
-  height: 100%;
-  &#home {
+  main#home {
     margin-top: 20vh;
-  }
-  .icons {
-    margin-top: 1rem;
+    padding: 4rem;
 
-    a {
-      padding: 0 0.4rem;
+    .icons > a {
+      padding: 1rem 0.4rem;
 
       &:hover {
         color: $secondary-color;
@@ -82,4 +78,152 @@ main {
       }
     }
   }
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  // About Page
+
+  main#about {
+    padding: 4rem;
+
+    .sm-heading {
+      margin-bottom: 0;
+    }
+
+    .about-info {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 30px;
+      grid-template-areas:
+        "bioImage bio bio"
+        "item1 item2 item3";
+
+      .bio-image {
+        grid-area: bioImage;
+        border: 3px solid $secondary-color;
+        border-radius: 50%;
+        width: 250px;
+        height: 250px;
+        align-self: center;
+        justify-self: center;
+      }
+      .bio {
+        grid-area: bio;
+        font-size: 24px;
+
+        h3 {
+          color: $secondary-color;
+        }
+      }
+      .bio-item {
+        background: lighten($primary-color, 5);
+        border-bottom: 5px solid $secondary-color;
+        padding: 0 0 0 0.5rem;
+
+        .item1 {
+          grid-area: item1;
+        }
+        .item2 {
+          grid-area: item2;
+        }
+        .item3 {
+          grid-area: item3;
+        }
+      }
+    }
+  }
+
+  // Work Page
+  main#work {
+    padding: 4rem;
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.7rem;
+
+      .item > a > img {
+        width: 100%;
+        border: #fff solid 3px;
+
+        &:hover {
+          @include easeOut;
+          border: $secondary-color solid 3px;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+
+  // Contact Page
+
+  main#contact {
+    padding: 4rem;
+    .boxes {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      .box {
+        padding: 0.3rem;
+        border: 3px solid #fff;
+        font-size: 30px;
+
+        span {
+          color: $secondary-color;
+        }
+
+        &:hover {
+          background: $secondary-color;
+          border: 3px solid black;
+          color: set-text-color($secondary-color);
+
+          span {
+            text-decoration: underline;
+            color: set-text-color($secondary-color);
+          }
+        }
+      }
+    }
+  }
+
+  //Buttons
+  .btn {
+    display: block;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    margin-bottom: 0.3rem;
+
+    &:hover {
+      @include easeOut;
+      background: $secondary-color;
+      color: set-text-color($secondary-color);
+    }
+  }
+
+  .btn-light {
+    @extend .btn;
+    background: #c4c4c4;
+    color: set-text-color(#fff);
+  }
+
+  .btn-dark {
+    @extend .btn;
+    background: black;
+  }
+
+  // Footer Styling
+  #footer {
+    width: 100%;
+    height: 60px;
+    background: darken($primary-color, 10);
+    padding: 1rem;
+    text-align: center;
+  }
+
+  @import "mobile.scss";
 }
