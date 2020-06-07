@@ -5,6 +5,14 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  overflow-x: hidden !important;
+}
+body {
+  position: relative;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -172,7 +180,7 @@ body {
       .box {
         padding: 0.3rem;
         border: 3px solid #fff;
-        font-size: 30px;
+        font-size: 1.8rem;
 
         span {
           color: $secondary-color;

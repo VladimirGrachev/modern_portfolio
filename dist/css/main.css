@@ -21,7 +21,7 @@
       transform: rotate(-45deg) translate(7px, -6px); }
 
 .menu {
-  position: absolute;
+  position: fixed;
   width: 100%;
   top: 0;
   opacity: 0.9;
@@ -89,6 +89,13 @@
 
 * {
   box-sizing: border-box; }
+
+html,
+body {
+  overflow-x: hidden !important; }
+
+body {
+  position: relative; }
 
 body {
   margin: 0;
@@ -206,7 +213,7 @@ body {
       body main#contact .boxes .box {
         padding: 0.3rem;
         border: 3px solid #fff;
-        font-size: 30px; }
+        font-size: 1.8rem; }
         body main#contact .boxes .box span {
           color: #eece1a; }
         body main#contact .boxes .box:hover {
@@ -236,42 +243,49 @@ body {
     padding: 1rem;
     text-align: center; }
   @media screen and (max-width: 600px) {
+    body main {
+      text-align: center; }
+      body main .lg-heading {
+        line-height: 1;
+        margin-bottom: 1rem;
+        font-size: 4.5rem; }
+      body main .sm-heading {
+        font-size: 1rem; }
     body main#home {
-      text-align: center; }
-      body main#home h1 {
-        line-height: 1;
-        margin-bottom: 1rem; }
+      margin-top: 0; }
     body main#about {
-      text-align: center; }
-      body main#about .lg-heading {
-        line-height: 1;
-        margin-bottom: 1rem; }
+      padding: 4rem 2rem 2rem 2rem; }
       body main#about .sm-heading {
-        margin-bottom: 2rem; }
+        margin-bottom: 1rem; }
       body main#about .about-info {
+        gap: 1rem;
         grid-template-columns: 1fr;
         grid-template-areas: "bioImage" "bio" "item1" "item2" "item3"; }
+        body main#about .about-info .bio {
+          font-size: 1.2rem; }
+          body main#about .about-info .bio h3 {
+            margin-top: 0;
+            margin-bottom: 1rem; }
+        body main#about .about-info .bio-image {
+          width: 190px;
+          height: 190px; }
     body main#work {
-      text-align: center; }
-      body main#work .lg-heading {
-        line-height: 1;
-        margin-bottom: 1rem; }
+      padding: 5rem 2rem 2rem 2rem; }
       body main#work .projects {
         grid-template-columns: repeat(1, 1fr); }
     body main#contact {
-      text-align: center; }
-      body main#contact .lg-heading {
-        line-height: 1;
-        margin-bottom: 1rem; }
+      padding: 4rem 2rem 2rem 2rem; }
       body main#contact .boxes {
         grid-template-columns: repeat(1, 1fr);
         gap: 2rem; }
+        body main#contact .boxes .box {
+          font-size: 1.3rem; }
     body .menu .menu-nav,
     body .menu .menu-branding {
       float: none; }
     body .menu .menu-branding {
       width: 100%;
-      height: 25vh;
+      height: 30vh;
       transform: translate(600px, 0);
       transition: all 0.5s ease-out; }
       body .menu .menu-branding.show {
@@ -283,7 +297,7 @@ body {
         background: url("../img/portrait_small.jpg"); }
     body .menu .menu-nav {
       width: 100%;
-      height: 75vh;
+      height: 70vh;
       justify-content: start;
       transform: translate(-600px, 0);
       transition: all 0.5s ease-out; }
@@ -291,6 +305,12 @@ body {
         transform: translate(0, 0);
         transition: all 0.5s ease-out; } }
   @media screen and (min-width: 600px) and (max-width: 850px) {
+    body main .lg-heading {
+      font-size: 4.5rem; }
+    body main#home {
+      margin-top: 0; }
+      body main#home .sm-heading {
+        font-size: 1rem; }
     body main#about {
       text-align: center; }
       body main#about .about-info {
@@ -307,7 +327,12 @@ body {
       text-align: center; }
       body main#contact .boxes {
         grid-template-columns: repeat(1, 1fr);
-        gap: 2rem; } }
+        gap: 2rem; }
+    body .menu .menu-branding .portrait {
+      width: 190px;
+      height: 190px; }
+    body .menu .menu-nav {
+      font-size: 20px; } }
   @media screen and (min-width: 851px) and (max-width: 1200px) {
     body main#work .projects {
       grid-template-columns: repeat(4, 1fr); } }

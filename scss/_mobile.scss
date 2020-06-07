@@ -1,26 +1,31 @@
 // Small devices
 @include sm {
-  // Main Page
-
-  main#home {
+  // Main common properties
+  main {
     text-align: center;
-    h1 {
+
+    .lg-heading {
       line-height: 1;
       margin-bottom: 1rem;
+      font-size: 4.5rem;
     }
+    .sm-heading {
+      font-size: 1rem;
+    }
+  }
+  // Home Page
+  main#home {
+    margin-top: 0;
   }
 
   // About Page
   main#about {
-    text-align: center;
-    .lg-heading {
-      line-height: 1;
+    padding: 4rem 2rem 2rem 2rem;
+    .sm-heading {
       margin-bottom: 1rem;
     }
-    .sm-heading {
-      margin-bottom: 2rem;
-    }
     .about-info {
+      gap: 1rem;
       grid-template-columns: 1fr;
       grid-template-areas:
         "bioImage"
@@ -28,17 +33,25 @@
         "item1"
         "item2"
         "item3";
+
+      .bio {
+        font-size: 1.2rem;
+
+        h3 {
+          margin-top: 0;
+          margin-bottom: 1rem;
+        }
+      }
+      .bio-image {
+        width: 190px;
+        height: 190px;
+      }
     }
   }
 
   // Work-Projects Page
   main#work {
-    text-align: center;
-    .lg-heading {
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-
+    padding: 5rem 2rem 2rem 2rem;
     .projects {
       grid-template-columns: repeat(1, 1fr);
     }
@@ -46,14 +59,13 @@
 
   // Contact Page
   main#contact {
-    text-align: center;
-    .lg-heading {
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
+    padding: 4rem 2rem 2rem 2rem;
     .boxes {
       grid-template-columns: repeat(1, 1fr);
       gap: 2rem;
+      .box {
+        font-size: 1.3rem;
+      }
     }
   }
 
@@ -66,7 +78,7 @@
 
     .menu-branding {
       width: 100%;
-      height: 25vh;
+      height: 30vh;
       transform: translate(600px, 0);
       @include easeOut;
 
@@ -83,7 +95,7 @@
 
     .menu-nav {
       width: 100%;
-      height: 75vh;
+      height: 70vh;
       justify-content: start;
       transform: translate(-600px, 0);
       @include easeOut;
@@ -99,6 +111,21 @@
 // Medium devices
 
 @include md {
+  // Common properties
+  main {
+    .lg-heading {
+      font-size: 4.5rem;
+    }
+  }
+
+  // Home Page
+  main#home {
+    margin-top: 0;
+
+    .sm-heading {
+      font-size: 1rem;
+    }
+  }
   //About Page
   main#about {
     text-align: center;
@@ -131,6 +158,18 @@
     .boxes {
       grid-template-columns: repeat(1, 1fr);
       gap: 2rem;
+    }
+  }
+  // Menu Overlay
+  .menu {
+    .menu-branding {
+      .portrait {
+        width: 190px;
+        height: 190px;
+      }
+    }
+    .menu-nav {
+      font-size: 20px;
     }
   }
 }
